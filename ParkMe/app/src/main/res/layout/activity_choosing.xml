@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2c1a32"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    tools:context="com.example.android.parkme.ChoosingActivity">
+
+    <!--<SlidingDrawer
+        android:id="@+id/slidingDrawer1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/park"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingTop="12dp"
+            android:text="parking"
+            android:textAllCaps="true"
+            android:textColor="#FFF"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/park"
+            android:layout_weight="8"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:orientation="vertical"
+            android:rowCount="4">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="13dp"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="softserve_lviv_hq"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="13dp"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="sichovykh"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="13dp"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="valova"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="13dp"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="vernissage"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/round_corners"
+                android:text="video"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/round_corners"
+                android:text="video"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/round_corners"
+                android:text="video"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="17sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/round_corners"
+                android:text="video"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="15sp" />
+        </GridLayout>
+    </RelativeLayout>
+    <!--</SlidingDrawer>-->
+</ScrollView>

@@ -1,0 +1,121 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_map_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Maps">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<TextView
+            android:id="@+id/infoForUsers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:text=""
+            android:textColor="#2c1a32"
+            android:textSize="16sp" />-->
+
+        <!--<android.support.design.widget.FloatingActionButton
+            android:id="@+id/find"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_my_location_black_48dp"/>-->
+
+        <Button
+            android:id="@+id/theNearestParking"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/round_corners"
+            android:text="@string/nearest_parking_button"
+            android:textColor="#FFFFFF" />
+
+        <!--<Button
+            android:id="@+id/choosingParking"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/theNearestParking"
+            android:background="@drawable/round_corners"
+            android:text="Choose parking"
+            android:textColor="#FFFFFF"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp" />-->
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            tools:context="com.example.android.parkme.Maps" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#2c1a32"
+            android:src="@drawable/ic_info_black_48dp"
+            app:backgroundTint="#2c1a32" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/contentInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/theNearestParking"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/corners_bottom_sheet"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/parkingName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Name"
+                android:textColor="#FFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/parkingName"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/round_corners"
+                android:padding="8dp"
+                android:text="@string/video_translation_button"
+                android:textColor="#FFF" />
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

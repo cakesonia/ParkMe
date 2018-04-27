@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">ParkMe</string>
+    <string name="title_activity_maps">Map</string>
+
+    // for "activity_about_us.xml"
+    <string name="about_us_xml_name">About us</string>
+    <string name="contact_us">Contact us</string>
+    <string name="sofia_contact_info">sofia contact info</string>
+    <string name="severyn_contact_info">severyn contact info</string>
+    <string name="tania_contact_info">tania contact info</string>
+    <string name="yura_contact_info">yura contact info</string>
+
+    // for "activity_email_password.xml"
+    <string name="subtitle">fast and easy</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="authorization_button">Authorization</string>
+    <string name="registration_button">Registration</string>
+
+    // for "activity_maps.xml"
+    <string name="nearest_parking_button">Nearest parking</string>
+    <string name="video_translation_button">Video translation</string>
+    <string name="Sschovykh_strilʹtsiv_street">Parking \"Sichovykh Strilʹtsiv Street\"</string>
+    <string name="valova_street">Parking \"Valova Street\"</string>
+    <string name="vernissage">Parking zone \"Vernissage\"</string>
+    <string name="softserve_lviv_hq">Parking \"SoftServe Lviv HQ\"</string>
+</resources>
