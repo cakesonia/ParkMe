@@ -33,7 +33,6 @@
 
         <Button
             android:id="@+id/nearestParking"
-            android:id="@+id/theNearestParking"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
