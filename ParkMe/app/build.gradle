@@ -4,11 +4,8 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.android.parkme"
-<<<<<<< HEAD
         minSdkVersion 21
-=======
         minSdkVersion 15
->>>>>>> 1e6add94b45f04720018e985513a0bfa58e1900b
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
