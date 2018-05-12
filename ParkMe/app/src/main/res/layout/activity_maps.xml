@@ -32,11 +32,8 @@
             android:src="@drawable/ic_my_location_black_48dp"/>-->
 
         <Button
-<<<<<<< HEAD
             android:id="@+id/nearestParking"
-=======
             android:id="@+id/theNearestParking"
->>>>>>> 1e6add94b45f04720018e985513a0bfa58e1900b
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
