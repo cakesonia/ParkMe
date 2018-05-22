@@ -131,12 +131,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 public void onProviderDisabled(String provider) {
                 }
             });
+
+            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            locationLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(locationLatLng));
+            mMap.moveCamera(CameraUpdateFactory.zoomTo(15));
         }
 
-        location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        locationLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(locationLatLng));
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(15));
         cleanMap();
     }
 
