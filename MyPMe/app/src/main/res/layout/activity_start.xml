@@ -36,8 +36,8 @@
         android:background="@drawable/round_corners_white"
         android:fontFamily="@font/delius"
         android:text="@string/start"
+        android:textAllCaps="true"
         android:textColor="#26c6da"
-        android:textSize="35sp"
-        android:textAllCaps="true"/>
+        android:textSize="35sp" />
 
 </RelativeLayout>

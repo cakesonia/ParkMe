@@ -1,12 +1,12 @@
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -39,7 +39,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 
     private static final String TAG = "EmailPassword";
 
-//    private TextView mStatusTextView;
+    //    private TextView mStatusTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
 
@@ -68,7 +68,7 @@ public class EmailPasswordActivity extends BaseActivity implements
         // Buttons
         signInButton = findViewById(R.id.email_sign_in_button);
         signInButton.setOnClickListener(this);
-        signUpButton= findViewById(R.id.email_create_account_button);
+        signUpButton = findViewById(R.id.email_create_account_button);
         signUpButton.setOnClickListener(this);
         signOutButton = findViewById(R.id.sign_out_button);
         signOutButton.setOnClickListener(this);
@@ -80,9 +80,7 @@ public class EmailPasswordActivity extends BaseActivity implements
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
 
-        if (isVerified()) {
-            switchToNextScreen();
-        }
+        isVerified();
 
         skipButtonClick();
     }
@@ -94,9 +92,7 @@ public class EmailPasswordActivity extends BaseActivity implements
         // Check if user is signed in (non-null) and update UI accordingly.
         currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-        if (isVerified()) {
-            switchToNextScreen();
-        }
+        isVerified();
     }
     // [END on_start_check_user]
 
@@ -132,9 +128,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                     }
                 });
         // [END create_user_with_email]
-        if (isVerified()) {
-            switchToNextScreen();
-        }
+        isVerified();
     }
 
     private void signIn(String email, String password) {
@@ -172,9 +166,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                     }
                 });
         // [END sign_in_with_email]
-        if (isVerified()) {
-            switchToNextScreen();
-        }
+        isVerified();
     }
 
     private void signOut() {
@@ -183,6 +175,7 @@ public class EmailPasswordActivity extends BaseActivity implements
     }
 
     private void sendEmailVerification() {
+        isVerified();
         // Disable button
         verifyEmailButton.setEnabled(false);
 
@@ -211,13 +204,12 @@ public class EmailPasswordActivity extends BaseActivity implements
                     }
                 });
         // [END send_email_verification]
-        if (isVerified()) {
-            switchToNextScreen();
-        }
     }
 
-    private boolean isVerified() {
-        return currentUser != null && currentUser.isEmailVerified() && !verifyEmailButton.isEnabled();
+    private void isVerified() {
+        if (currentUser != null && currentUser.isEmailVerified()) {
+            switchToNextScreen();
+        }
     }
 
     private boolean validateForm() {

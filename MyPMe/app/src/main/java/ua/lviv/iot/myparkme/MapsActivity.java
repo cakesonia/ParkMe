@@ -79,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         final View contentInfo = findViewById(R.id.content_info);
         bottomSheetBehavior = BottomSheetBehavior.from(contentInfo);
         bottomSheetBehavior.setHideable(true);
-        bottomSheetBehavior.setPeekHeight(384);
+        bottomSheetBehavior.setPeekHeight(480);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
 
         parkingName = findViewById(R.id.parking_name);
