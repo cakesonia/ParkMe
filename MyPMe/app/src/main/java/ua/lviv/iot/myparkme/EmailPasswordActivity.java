@@ -24,6 +24,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,7 +40,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 
     private static final String TAG = "EmailPassword";
 
-    //    private TextView mStatusTextView;
+//    private TextView mStatusTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
 
@@ -80,8 +81,6 @@ public class EmailPasswordActivity extends BaseActivity implements
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
 
-        isVerified();
-
         skipButtonClick();
     }
 
@@ -92,7 +91,11 @@ public class EmailPasswordActivity extends BaseActivity implements
         // Check if user is signed in (non-null) and update UI accordingly.
         currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-        isVerified();
+        if (currentUser != null && currentUser.isEmailVerified()) {
+            switchToNextScreen();
+        } else {
+            // do nothing
+        }
     }
     // [END on_start_check_user]
 
@@ -128,7 +131,6 @@ public class EmailPasswordActivity extends BaseActivity implements
                     }
                 });
         // [END create_user_with_email]
-        isVerified();
     }
 
     private void signIn(String email, String password) {
@@ -149,6 +151,11 @@ public class EmailPasswordActivity extends BaseActivity implements
                             Log.d(TAG, "signInWithEmail:success");
                             currentUser = mAuth.getCurrentUser();
                             updateUI(currentUser);
+                            if (currentUser != null && currentUser.isEmailVerified()) {
+                                switchToNextScreen();
+                            } else {
+                                Toast.makeText(EmailPasswordActivity.this, "Verify email please or sign out", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -166,7 +173,6 @@ public class EmailPasswordActivity extends BaseActivity implements
                     }
                 });
         // [END sign_in_with_email]
-        isVerified();
     }
 
     private void signOut() {
@@ -175,7 +181,6 @@ public class EmailPasswordActivity extends BaseActivity implements
     }
 
     private void sendEmailVerification() {
-        isVerified();
         // Disable button
         verifyEmailButton.setEnabled(false);
 
@@ -194,6 +199,11 @@ public class EmailPasswordActivity extends BaseActivity implements
                             Toast.makeText(EmailPasswordActivity.this,
                                     "Verification email sent to " + currentUser.getEmail(),
                                     Toast.LENGTH_SHORT).show();
+                            if (currentUser != null && currentUser.isEmailVerified()) {
+                                switchToNextScreen();
+                            } else {
+                                Toast.makeText(EmailPasswordActivity.this, "Verify email please or sign out", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             Log.e(TAG, "sendEmailVerification", task.getException());
                             Toast.makeText(EmailPasswordActivity.this,
@@ -204,12 +214,6 @@ public class EmailPasswordActivity extends BaseActivity implements
                     }
                 });
         // [END send_email_verification]
-    }
-
-    private void isVerified() {
-        if (currentUser != null && currentUser.isEmailVerified()) {
-            switchToNextScreen();
-        }
     }
 
     private boolean validateForm() {
