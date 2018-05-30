@@ -25,6 +25,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -51,11 +52,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private LatLng locationLatLng;
     private Location location;
+
+    //Markers
+    private Marker sisMarker;      //Січових Стрільців
+    private Marker valovaMarker;   //Валова
+    private Marker vernisMarker;   //Вернісаж
+    private Marker sshqMarker;     //SS-Садова
+
     //Marker's latlng
     private LatLng sisLatlng = new LatLng(49.84118611, 24.02551979);       //Січових Стрільців
     private LatLng valovaLatlng = new LatLng(49.83978843, 24.0327926);     // Валова
     private LatLng vernisLatlng = new LatLng(49.84382049, 24.02835622);    // Вернісаж
-    private LatLng sshqLatlng = new LatLng(49.822717, 23.9853437);         // Софт, Садова
+    private LatLng sshqLatlng = new LatLng(49.822717, 23.9853437);         //SS-Садова
 
     private BottomSheetBehavior<View> bottomSheetBehavior;
     private TextView parkingName;
@@ -142,22 +150,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void nearestParkingButtonClick() {
-        Button nearestParking = findViewById(R.id.nearest_parking_button);
+        final Button nearestParking = findViewById(R.id.nearest_parking_button);
         nearestParking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isDistanceLess(sisLatlng, valovaLatlng, vernisLatlng, sshqLatlng)) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(sisLatlng));
-                    mMap.moveCamera(CameraUpdateFactory.zoomTo(17));
+                    /*mMap.moveCamera(CameraUpdateFactory.newLatLng(sisLatlng));
+                    mMap.moveCamera(CameraUpdateFactory.zoomTo(17));*/
+                    sisMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                 } else if (isDistanceLess(valovaLatlng, sisLatlng, vernisLatlng, sshqLatlng)) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(valovaLatlng));
-                    mMap.moveCamera(CameraUpdateFactory.zoomTo(17));
+                    valovaMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                 } else if (isDistanceLess(vernisLatlng, valovaLatlng, sisLatlng, sshqLatlng)) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(vernisLatlng));
-                    mMap.moveCamera(CameraUpdateFactory.zoomTo(17));
+                    vernisMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                 } else if (isDistanceLess(sshqLatlng, valovaLatlng, sisLatlng, vernisLatlng)) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(sshqLatlng));
-                    mMap.moveCamera(CameraUpdateFactory.zoomTo(17));
+                    sshqMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
                 }
             }
         });
@@ -208,24 +214,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void drawMarkers() {
-        Marker sisMarker = mMap.addMarker(new MarkerOptions()
+
+        sisMarker = mMap.addMarker(new MarkerOptions()
                 .position(sisLatlng)
-                .title("Parking \"Sichovykh Strilʹtsiv Street\""));
+                .title("Parking \"Sichovykh Strilʹtsiv Street\"")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
         sisMarker.setTag(1);
 
-        Marker valovaMarker = mMap.addMarker(new MarkerOptions()
+        valovaMarker = mMap.addMarker(new MarkerOptions()
                 .position(valovaLatlng)
-                .title("Parking \"Valova Street\""));
+                .title("Parking \"Valova Street\"")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
         valovaMarker.setTag(1);
 
-        Marker vernisMarker = mMap.addMarker(new MarkerOptions()
+        vernisMarker = mMap.addMarker(new MarkerOptions()
                 .position(vernisLatlng)
-                .title("Parking zone \"Vernissage\""));
+                .title("Parking zone \"Vernissage\"")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
         vernisMarker.setTag(1);
 
-        Marker sshqMarker = mMap.addMarker(new MarkerOptions()
+        sshqMarker = mMap.addMarker(new MarkerOptions()
                 .position(sshqLatlng)
-                .title("Parking \"SoftServe Lviv HQ\""));
+                .title("Parking \"SoftServe Lviv HQ\"")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
         sshqMarker.setTag(1);
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -334,6 +345,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onMapClick(LatLng latLng) {
                 bottomSheetBehavior.setHideable(true);
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                sisMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                sshqMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                vernisMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                valovaMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
             }
         });
     }
